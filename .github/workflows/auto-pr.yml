@@ -22,9 +22,9 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
 
-          base: sapiderman/seed-go
+          base: hyerjumptech/monika
           branch: feat/Update-monika-schema
-          add-path: README.md
+          add-paths: README
           
           title: '[PR] Update config schema'
           body: |

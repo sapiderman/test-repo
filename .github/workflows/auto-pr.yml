@@ -22,9 +22,10 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
 
-          base: github.com/sapiderman/seed-go
+          base: sapiderman/seed-go
           branch: feat/Update-monika-schema
-          delete-branch: true
+          add-path: README.md
+          
           title: '[PR] Update config schema'
           body: |
             In this PR:
@@ -34,6 +35,7 @@ jobs:
             [1]: https://github.com/peter-evans/create-pull-request
           
           draft: false
+          delete-branch: true
 
       - name: Check outputs
         if: ${{ steps.cpr.outputs.pull-request-number }}

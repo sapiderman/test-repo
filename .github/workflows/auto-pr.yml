@@ -22,8 +22,7 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
 
-          repository: hyperjumptech/monika
-          base: main
+          base: hyperjumptech/monika/main
           branch: feat/Update-monika-schema
           add-paths: README
           

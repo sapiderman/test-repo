@@ -17,12 +17,14 @@ jobs:
       
       - name: Update file
         run: |
+          rm SECURITY.md
           wget https://raw.githubusercontent.com/sapiderman/seed-go/main/SECURITY.md
           cat SECURITY.md          
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with: 
+          token: $${{ secrets.GITHUB_TOKEN }}
           commit-message: Updating Schema JSON file
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>

@@ -28,7 +28,6 @@ jobs:
           commit-message: Updating Schema JSON file
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          base: main
           branch: feat/Update-monika-schema
           
           title: '[PR] Update config schema'

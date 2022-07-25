@@ -27,7 +27,8 @@ jobs:
           token: $${{ secrets.GITHUB_TOKEN }}
           commit-message: Updating Schema JSON file
           committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          # author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          author: wonderwoman
           base: main
           branch: feat/Update-monika-schema
           

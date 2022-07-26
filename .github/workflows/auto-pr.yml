@@ -16,10 +16,9 @@ jobs:
 #          repository: sapiderman/seed-go  TRY OWN REPO
       
       - name: Update file
-        run: |
-          cat README.md
-          wget https://raw.githubusercontent.com/sapiderman/test-repo/main/README.md
-          echo "hello something" > README.md   
+        run: |          
+          rm README.md
+          wget https://raw.githubusercontent.com/sapiderman/test-repo/main/README.md          
           cat README.md       
 
       - name: Create Pull Request

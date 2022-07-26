@@ -18,7 +18,7 @@ jobs:
       - name: Update file
         run: |          
           rm README.md
-          wget https://raw.githubusercontent.com/sapiderman/test-repo/main/README.md          
+          wget https://raw.githubusercontent.com/sapiderman/seed-go/main/README.md          
           cat README.md       
 
       - name: Create Pull Request

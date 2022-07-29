@@ -12,12 +12,13 @@ jobs:
     steps: 
       - uses: actions/checkout@v3
         with:
-          repository: SchemaStore/schemastore
+          repository: sapiderman/schemastore
 
       - name: Sync local fork 
         run: | 
-          git remote add localfork git@github.com:sapiderman/schemastore.git  
-          git push localfork master    
+          git remote add upstream git@github.com:Schemastore/schemastore.git
+          git pull upstream master --ff-only
+          git push origin master
       
       - name: Update file
         run: |          
@@ -25,7 +26,8 @@ jobs:
           wget https://raw.githubusercontent.com/hyperjumptech/monika/main/README.md          
           cat README.md   
           git status
-          ls -s    
+          ls -s
+          git status    
       
 
       - name: Check outputs

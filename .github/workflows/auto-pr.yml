@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: sapiderman/schemastore
+          token: ${{ secrets.AUTO_PR_TOKEN }}  
 
       - name: Sync local fork 
         run: | 
@@ -20,14 +21,11 @@ jobs:
           git pull upstream master --ff-only
           git push origin master
       
-      - name: Update file
+      - name: Update schema file
         run: |          
-          rm README.md
-          wget https://raw.githubusercontent.com/hyperjumptech/monika/main/README.md          
-          cat README.md   
-          git status
-          ls -s
-          git status    
+          cd src/schemas/json
+          rm monika-config-schema.json
+          wget https://raw.githubusercontent.com/hyperjumptech/monika/main/src/monika-config-schema.json  
       
 
       - name: Check outputs

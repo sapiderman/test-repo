@@ -17,15 +17,34 @@ jobs:
 
       - name: Sync local fork 
         run: | 
-          git remote add upstream https://github.com/SchemaStore/schemastore.git
+          git remote add upstream https://github.com/hyperjump/monika.git
           git pull upstream master --ff-only
           git push origin master
       
-      - name: Update schema file
+      - name: Update some file
         run: |          
-          cd src/schemas/json
-          rm monika-config-schema.json
-          wget https://raw.githubusercontent.com/hyperjumptech/monika/main/src/monika-config-schema.json  
+          rm README.MD
+          
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.AUTO_PR_TOKEN }}
+          commit-message: Update monika-config-schema
+          committer: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          base: master
+          push-to-fork: hyperjumptech/schemastore
+          branch: feat/Update-monika-schema
+          title: "[PR] Update monika config schema"
+          body: |
+            In this PR:
+            - Update config json schema to improve suggestions
+            - Update keys, default values and fix typos
+
+          draft: false
+          delete-branch: true
       
 
       - name: Check outputs

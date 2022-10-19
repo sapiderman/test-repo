@@ -23,7 +23,7 @@ jobs:
       
       - name: Update some file
         run: |          
-          rm README.MD
+          rm README.md
           
 
       - name: Create Pull Request

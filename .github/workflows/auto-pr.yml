@@ -12,13 +12,13 @@ jobs:
     steps: 
       - uses: actions/checkout@v3
         with:
-          repository: sapiderman/schemastore
+          repository: sapiderman/monika
           token: ${{ secrets.AUTO_PR_TOKEN }}  
 
       - name: Sync local fork 
         run: | 
           git remote add upstream https://github.com/hyperjumptech/monika
-          git pull upstream main --ff-only
+          git pull upstream main --rebase=true
           git push origin main
       
       - name: Update some file
@@ -35,13 +35,13 @@ jobs:
           committer: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           base: master
-          push-to-fork: hyperjumptech/schemastore
-          branch: feat/Update-monika-schema
-          title: "[PR] Update monika config schema"
+          push-to-fork: hyperjumptech/monika
+          branch: test/autopr-workflow
+          title: "[PR] testing autoPR"
           body: |
             In this PR:
-            - Update config json schema to improve suggestions
-            - Update keys, default values and fix typos
+            - 1. workflow
+            - 2. fork target
 
           draft: false
           delete-branch: true

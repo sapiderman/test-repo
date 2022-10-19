@@ -12,12 +12,13 @@ jobs:
     steps: 
       - uses: actions/checkout@v3
         with:
-          repository: sapiderman/monika
+          repository: hyperjumptech/monika
           token: ${{ secrets.AUTO_PR_TOKEN }}  
 
       - name: Sync local fork 
         run: | 
           git remote add upstream https://github.com/hyperjumptech/monika
+          git remote -v
           git pull upstream main --rebase=true
           git push origin main
       
@@ -35,7 +36,7 @@ jobs:
           committer: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           base: master
-          push-to-fork: hyperjumptech/monika
+          push-to-fork: sapiderman/monika
           branch: test/autopr-workflow
           title: "[PR] testing autoPR"
           body: |

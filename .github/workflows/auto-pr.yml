@@ -17,7 +17,7 @@ jobs:
 
       - name: Sync local fork 
         run: | 
-          git remote add upstream https://github.com/hyperjump/monika.git
+          git remote add upstream https://github.com/hyperjumptech/monika
           git pull upstream master --ff-only
           git push origin master
       

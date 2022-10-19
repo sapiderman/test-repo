@@ -18,8 +18,8 @@ jobs:
       - name: Sync local fork 
         run: | 
           git remote add upstream https://github.com/hyperjumptech/monika
-          git pull upstream master --ff-only
-          git push origin master
+          git pull upstream main --ff-only
+          git push origin main
       
       - name: Update some file
         run: |          

@@ -24,8 +24,8 @@ jobs:
       - name: Update schema file
         run: |
           cd src/schemas/json
-          rm monika-config-schema.json
-          wget https://raw.githubusercontent.com/hyperjumptech/monika/main/src/monika-config-schema.json
+          rm monika-config-schema.json          
+          wget https://github.com/sapiderman/monika/blob/chore/744-fix-autopr/src/monika-config-schema.json
       
       - name: Test schema 
         run : |

@@ -23,7 +23,7 @@ jobs:
 
       - name: Sync local fork
         run: |
-          git remote add upstream https://github.com/SchemaStore/schemastore.git
+          git remote add upstream https://github.com/SchemaStore/schemastore
           git pull upstream master --ff-only
           git push origin master
 

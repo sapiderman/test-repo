@@ -25,7 +25,7 @@ jobs:
         run: |
           cd src/schemas/json
           rm monika-config-schema.json          
-          wget https://github.com/sapiderman/monika/blob/chore/744-fix-autopr/src/monika-config-schema.json
+          wget https://raw.githubusercontent.com/sapiderman/monika/chore/744-fix-autopr/src/monika-config-schema.json
       
       - name: Test schema 
         run : |

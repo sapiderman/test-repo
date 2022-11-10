@@ -25,7 +25,7 @@ jobs:
           git diff-index --quiet HEAD -- || { echo "ERROR: Dirty repository found"; git status --porcelain; }
           echo "event.commits is: ${{ github.event.commits }}"
           echo "username: $USERNAME"
-          git commit -m "yeaah updated" --author="$USERNAME"
+          git commit -m "yeaah updated" --author="$USERNAME <${{ github.event.pusher.email}}>"
           git diff-index --quiet HEAD -- || { echo "ERROR: Dirty repository found"; git status --porcelain; exit 1; }
 
       - name: Print Github Contexts

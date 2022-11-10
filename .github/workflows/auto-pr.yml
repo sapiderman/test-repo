@@ -7,8 +7,8 @@ on:
       - main  
 
 env:
-  USERNAME: ${{ github.event.commits }}
-  GITHUB_CONTEXT: ${{ toJson(github) }} 
+  USERNAME: ${{ github.event.pusher.name }}
+  GITHUB_CONTEXT: ${{ toJson(github.event) }} 
 
 jobs:
   create-PR:

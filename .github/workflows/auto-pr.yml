@@ -1,7 +1,10 @@
-name: PR to seed-nodejs
+name: PR testing
 
 on:
   workflow_dispatch:
+
+env:
+  USERNAME: ${{ github.event.pull_request.user.login }}
 
 jobs:
   create-PR:
@@ -16,8 +19,9 @@ jobs:
         run: |          
           rm README.md
           git diff-index --quiet HEAD -- || { echo "ERROR: Dirty repository found"; git status --porcelain; }
-          echo ${{ github.event.pull_request.user.login }}
-          git commit -m "yeaah updated" --author="${{ github.event.pull_request.user.login }}"
+          echo "${{ github.event.pull_request.user.login }}"
+          echo $USERNAME
+          git commit -m "yeaah updated" --author="$USERNAME"
           git diff-index --quiet HEAD -- || { echo "ERROR: Dirty repository found"; git status --porcelain; exit 1; }
 
       - name: Create Pull Request

@@ -26,10 +26,8 @@ jobs:
           git diff-index --quiet HEAD -- || { echo "ERROR: Dirty repository found"; git status --porcelain; }          
           echo "username: $USERNAME"
           echo "username: $EMAIL"
-          git config --global user.name "$USERNAME"
-          git config --global user.email "$EMAIL"
           git add .
-          git commit -m "yeaah updated" 
+          git commit -m "yeaah updated" --author="${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>"
           git diff-index --quiet HEAD -- || { echo "ERROR: Dirty repository found"; git status --porcelain; exit 1; }
 
       # - name: Print Github Contexts

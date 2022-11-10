@@ -9,19 +9,14 @@ jobs:
     steps: 
       - uses: actions/checkout@v3
         with:
-          repository: hyperjumptech/monika
+          repository: sapiderman/seed-go
           token: ${{ secrets.AUTO_PR_TOKEN }}  
 
-      - name: Sync local fork 
-        run: | 
-          git remote add upstream https://github.com/hyperjumptech/monika
-          git remote -v
-          git pull upstream main --rebase=true
-          git push origin main
       
       - name: Update some file
         run: |          
           rm README.md
+          git diff-index --quiet HEAD -- || { echo "ERROR: Dirty repository found"; git status --porcelain; exit 1; }
           
 
       - name: Create Pull Request
@@ -33,7 +28,7 @@ jobs:
           committer: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           base: main
-          push-to-fork: sapiderman/monika
+          # push-to-fork: sapiderman/seed-go
           branch: test/autopr-workflow
           title: "[PR] testing autoPR"
           body: |

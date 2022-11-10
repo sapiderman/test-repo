@@ -2,6 +2,9 @@ name: PR testing
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main  
 
 env:
   USERNAME: ${{ github.event.pull_request.user.login }}
@@ -24,25 +27,25 @@ jobs:
           git commit -m "yeaah updated" --author="$USERNAME"
           git diff-index --quiet HEAD -- || { echo "ERROR: Dirty repository found"; git status --porcelain; exit 1; }
 
-      - name: Create Pull Request
-        id: cpr
-        uses: peter-evans/create-pull-request@v4
-        with:
-          token: ${{ secrets.AUTO_PR_TOKEN }}
-          commit-message: Update monika-config-schema
-          committer: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          base: main
+      # - name: Create Pull Request
+      #   id: cpr
+      #   uses: peter-evans/create-pull-request@v4
+      #   with:
+      #     token: ${{ secrets.AUTO_PR_TOKEN }}
+      #     commit-message: Update monika-config-schema
+      #     committer: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+      #     author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+      #     base: main
           # push-to-fork: sapiderman/seed-go
-          branch: test/autopr-workflow
-          title: "[PR] testing autoPR"
-          body: |
-            In this PR:
-            - 1. workflow
-            - 2. fork target
+          # branch: test/autopr-workflow
+          # title: "[PR] testing autoPR"
+          # body: |
+          #   In this PR:
+          #   - 1. workflow
+          #   - 2. fork target
 
-          draft: false
-          delete-branch: true
+          # draft: false
+          # delete-branch: true
       
 
       - name: Check outputs

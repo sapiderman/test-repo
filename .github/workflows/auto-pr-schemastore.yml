@@ -7,9 +7,6 @@ name: Auto PR to Schemastore/schemastore.git
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 jobs:
   create-auto-PR:

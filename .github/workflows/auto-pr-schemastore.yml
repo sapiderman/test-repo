@@ -27,8 +27,8 @@ jobs:
           rm monika-config-schema.json          
           wget https://raw.githubusercontent.com/sapiderman/monika/chore/744-fix-autopr/src/monika-config-schema.json
       
-          git status ---porcelain
-          git diff-index --quiet HEAD --
+          git status --porcelain
+          git diff-index HEAD --
 
 
       - name: Test schema 

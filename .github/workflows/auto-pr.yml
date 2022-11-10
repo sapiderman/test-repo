@@ -2,7 +2,7 @@ name: PR to seed-nodejs
 
 on:
   workflow_dispatch:
-     
+
 jobs:
   create-PR:
     runs-on: ubuntu-latest
@@ -11,13 +11,13 @@ jobs:
         with:
           repository: sapiderman/seed-go
           token: ${{ secrets.AUTO_PR_TOKEN }}  
-
       
       - name: Update some file
         run: |          
           rm README.md
           git diff-index --quiet HEAD -- || { echo "ERROR: Dirty repository found"; git status --porcelain; }
-          git commit -m "yeaah updated"
+          echo ${{ github.event.pull_request.user.login }}
+          git commit -m "yeaah updated" --author="${{ github.event.pull_request.user.login }}"
           git diff-index --quiet HEAD -- || { echo "ERROR: Dirty repository found"; git status --porcelain; exit 1; }
 
       - name: Create Pull Request

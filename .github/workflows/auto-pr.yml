@@ -7,9 +7,9 @@ on:
       - main
 
 env:
-  USERNAME: ${{ github.event.pusher.name }}
-  EMAIL: ${{ github.event.pusher.email}}
-  # GITHUB_CONTEXT: ${{ toJson(github.event) }}
+  USERNAME: ${{ github.actor }}
+  EMAIL: ${{ github.actor}}@users.noreply.github.com
+  GITHUB_CONTEXT: ${{ toJson(github.event) }}
 
 jobs:
   create-PR:
@@ -23,9 +23,9 @@ jobs:
       - name: Update some file
         run: |
           rm README.md
-          git diff-index --quiet HEAD -- || { echo "ERROR: Dirty repository found"; git status --porcelain; }
-          echo "event.commits is: ${{ github.event.commits }}"
+          git diff-index --quiet HEAD -- || { echo "ERROR: Dirty repository found"; git status --porcelain; }          
           echo "username: $USERNAME"
+          echo "username: $EMAIL"
           git config --global user.name "$USERNAME"
           git config --global user.email "$EMAIL"
           git add .

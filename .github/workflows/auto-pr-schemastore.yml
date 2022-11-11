@@ -27,8 +27,6 @@ jobs:
           cd src/schemas/json
           rm monika-config-schema.json
           wget https://raw.githubusercontent.com/hyperjumptech/monika/main/src/monika-config-schema.json
-          git config --global user.name "$USERNAME"
-          git config --global user.email "$EMAIL"
           git add .
           git commit -m "update json schema"
       

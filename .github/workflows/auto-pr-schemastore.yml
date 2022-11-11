@@ -3,11 +3,15 @@
 # 2. Refresh it from upstream
 # 3. Create a PR for the json update
 
-name: Auto PR to Schemastore/schemastore.git
+name: Test Schema
 
 on:
   workflow_dispatch:
 
+env:
+  USERNAME: ${{ github.actor }}
+  EMAIL: ${{ github.actor}}@users.noreply.github.com
+  
 jobs:
   create-auto-PR:
     runs-on: ubuntu-latest
@@ -21,14 +25,14 @@ jobs:
       - name: Update schema file
         run: |
           cd src/schemas/json
-          rm monika-config-schema.json          
-          wget https://raw.githubusercontent.com/sapiderman/monika/chore/744-fix-autopr/src/monika-config-schema.json
+          rm monika-config-schema.json
+          wget https://raw.githubusercontent.com/hyperjumptech/monika/main/src/monika-config-schema.json
+          git config --global user.name "$USERNAME"
+          git config --global user.email "$EMAIL"
+          git add .
+          git commit -m "update json schema"
       
-          git status --porcelain
-          git diff-index HEAD --
-
-
-      - name: Test schema 
+      - name: Run Test on Schema
         run : |
           make
 
